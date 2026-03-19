@@ -1,0 +1,226 @@
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth; /* Makes clicking links slide smoothly */
+}
+
+/* Color Variables */
+:root {
+    --deep-green: #0a2213; /* Very dark, professional green */
+    --light-green: #144024;
+    --punch-red: #d32f2f; /* Bright red for buttons */
+    --red-hover: #b71c1c;
+    --text-light: #f4f4f4;
+    --text-dark: #333333;
+}
+
+body {
+    background-color: var(--text-light);
+    color: var(--text-dark);
+}
+
+/* Navigation */
+header {
+    background-color: var(--deep-green);
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--punch-red);
+}
+
+/* Buttons */
+.btn-red {
+    background-color: var(--punch-red);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-red:hover {
+    background-color: var(--red-hover);
+}
+
+.btn-green-light {
+    background-color: #25D366; /* WhatsApp Green */
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.hamburger {
+    display: none; /* Hidden on laptops */
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Layout Utilities */
+.section { padding: 80px 20px; }
+.container { max-width: 1100px; margin: auto; }
+.text-center { text-align: center; }
+.dark-bg { background-color: var(--light-green); color: white; }
+
+.split {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    background: linear-gradient(rgba(10, 34, 19, 0.8), rgba(10, 34, 19, 0.8)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&auto=format&fit=crop') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding-top: 60px;
+}
+
+.hero-content h1 { font-size: 4rem; margin-bottom: 20px; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 30px; }
+.hero-btn { font-size: 1.2rem; padding: 15px 30px; }
+
+/* About Section */
+.text-box, .image-box { flex: 1; }
+.text-box h2 { font-size: 2.5rem; color: var(--deep-green); margin-bottom: 20px; }
+.image-box img { width: 100%; border-radius: 10px; border-bottom: 5px solid var(--punch-red); }
+
+/* Grid Systems */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+
+/* Cards & Menu */
+.card { background: white; color: var(--text-dark); padding: 30px; border-radius: 10px; border-top: 4px solid var(--punch-red); }
+.menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; }
+.menu-item { display: flex; justify-content: space-between; border-bottom: 1px dashed #ccc; padding-bottom: 15px; }
+.menu-item h4 { color: var(--deep-green); }
+.price { color: var(--punch-red); font-weight: 700; font-size: 1.2rem; }
+
+/* Reviews */
+.review { background: var(--deep-green); padding: 30px; border-left: 5px solid var(--punch-red); border-radius: 5px; }
+.review p { font-style: italic; margin-bottom: 15px; }
+
+/* Footer */
+footer { background: var(--deep-green); color: white; padding: 60px 20px 20px; }
+footer h2 { margin-bottom: 20px; }
+.copyright { text-align: center; margin-top: 40px; font-size: 0.9rem; opacity: 0.7; }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .split { flex-direction: column; text-align: center; }
+    .grid-3, .grid-2, .menu-grid { grid-template-columns: 1fr; }
+    
+    /* Mobile Menu */
+    nav ul { display: none; flex-direction: column; width: 100%; position: absolute; top: 60px; left: 0; background: var(--deep-green); text-align: center; padding: 20px 0; }
+    nav ul.active { display: flex; }
+    nav ul li { margin: 15px 0; }
+    .hamburger { display: block; }
+    
+    header .btn-red { display: none; } /* Hide button on small screens to save space */
+    .hero-content h1 { font-size: 2.5rem; }
+}
+
+/* --- New Menu Card Grid System --- */
+
+.menu-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns on desktop */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden; /* Keeps the image inside the curved borders */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft, premium shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid var(--punch-red); /* The signature red accent */
+}
+
+.menu-card:hover {
+    transform: translateY(-8px); /* Card lifts up when touched/hovered */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Ensures images don't stretch weirdly */
+}
+
+.menu-card-content {
+    padding: 25px 20px;
+}
+
+.menu-card-content h4 {
+    color: var(--deep-green);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.menu-card-content p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    height: 65px; /* Keeps all cards the same height even if text length varies */
+}
+
+.menu-card-content .price {
+    display: block;
+    color: var(--punch-red);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-top: 10px;
+}
+
+/* --- Mobile Fix for the Cards --- */
+@media (max-width: 768px) {
+    .menu-grid-3 {
+        grid-template-columns: 1fr; /* Stacks to 1 column on phones */
+        gap: 20px;
+    }
+    
+    .menu-card-content p {
+        height: auto; /* Lets text flow naturally on smaller phone screens */
+    }
+}
